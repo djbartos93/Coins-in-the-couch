@@ -1,3 +1,4 @@
-Simple movie list for couchpotato.
+#Coins In The Couch
+-A better movie list for couchpotato
 
-Lists out movies in a better format than the default movie list. allows for better sorting and searching.
+the basic idea is to list out movies in a better format than the default movie list and allow for better sorting and searching.
