@@ -11,11 +11,13 @@ def list
   http = Net::HTTP.new(uri.host, uri.port)
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
+  output = JSON.parse response.body
+  print output['movies'][1]['info']['imdb']
   #print response.body
-  output = File.open('./db/temp_db.yml', 'w')
-  output.puts YAML.dump(JSON.parse response.body)
-  debug = JSON.parse response.body
-  print debug['movies'][0]['title']
+  #output = File.open('./db/temp_db.yml', 'w')
+  #output.puts YAML.dump(JSON.parse response.body)
+  #debug = JSON.parse response.body
+  #print debug['movies'][0]['title']
 end
 
 
