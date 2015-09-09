@@ -2,6 +2,7 @@ require 'net/http'
 require 'uri'
 require 'yaml'
 require 'json'
+require 'sinatra'
 
 def list
   puts "getting movies"
@@ -12,7 +13,9 @@ def list
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   output = JSON.parse response.body
-  imdbnum = output['movies'][1]['info']['imdb']
+  imdbnum = output['movies'][15]['info']['imdb']
+  all = imdbnum.each { |x| puts x}
+  
   #print response.body
   #output = File.open('./db/temp_db.yml', 'w')
   #output.puts YAML.dump(JSON.parse response.body)
@@ -22,24 +25,25 @@ end
 
 def omdb
   puts "getting movie info"
-    uri = URI.parse('http://www.omdbapi.com/?')
+    request_uri = 'http://www.omdbapi.com/?'
+    request_query = "i=#{list}&plot=short&r=json"
+    full_request = "#{request_uri}#{request_query}"
+    print full_request
+    uri = URI.parse(full_request)
 
     http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
+    output = JSON.parse response.body
+    print output
 
-    JSON.parse(Net::HTTP.post_form(uri, {
-    'i' => '=tt0289043&',
-    'plot' => '=short&',
-    'r' => '=json'
-    }).body)
 end
 
-def api_test
-  uri = URI.parse('http://www.omdbapi.com/?i=tt0289043&plot=short&r=json')
-  http = Net::HTTP.new(uri.host, uri.port)
-  request = Net::HTTP::Get.new(uri.request_uri)
-  response = http.request(request)
-  output = JSON.parse response.body
-  print output
+def get_all
+  puts "getting all movies"
+  list.each do |full_list|
+    puts full_list
+  end
 end
 
-api_test
+list
