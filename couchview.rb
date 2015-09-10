@@ -4,7 +4,7 @@ require 'yaml'
 require 'json'
 
 
-def list
+def title_list
   puts "getting movies"
 
   uri = URI.parse('http://172.16.0.15:5050/api/0c7afb2c910d49b2aa98b5f762e62b98/movie.list')
@@ -13,8 +13,9 @@ def list
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   output = JSON.parse response.body
-  imdbnum = output['movies'][0]['info']
-  all = imdbnum.each { |x| puts x}
+  output['movies'].each do |movie|
+    print movie['info']['original_title'].to_yaml
+  end
 
   #print response.body
   #output = File.open('./db/temp_db.yml', 'w')
@@ -39,11 +40,5 @@ def omdb
 
 end
 
-def get_all
-  puts "getting all movies"
-  list.each do |full_list|
-    puts full_list
-  end
-end
 
 list
