@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 require 'yaml'
 require 'json'
-require 'sinatra'
+
 
 def list
   puts "getting movies"
@@ -13,9 +13,9 @@ def list
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   output = JSON.parse response.body
-  imdbnum = output['movies'][15]['info']['imdb']
+  imdbnum = output['movies'][0]['info']
   all = imdbnum.each { |x| puts x}
-  
+
   #print response.body
   #output = File.open('./db/temp_db.yml', 'w')
   #output.puts YAML.dump(JSON.parse response.body)
