@@ -84,7 +84,6 @@ def sync
   output = JSON.parse response.body
   imdbnum = output['movies'].each do |movie|
     titles = movie['info']['original_title']
-    print titles
     @Movies.new(:title => titles).save
   end
 end
