@@ -1,0 +1,9 @@
+<h1>Search Results</h1>
+<ul class="search-results=container">
+  <%= @records.each do |record| %>
+    <li class="search-result">
+    </li>
+    <% end.empty? and begin %>
+      <li> no results </li>
+    <% end %>
+  </ul>
