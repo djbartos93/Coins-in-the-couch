@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :movies
 
   root to: "movies#index"
-  get 'sync' => 'movies#sync'
+  post 'sync' => 'movies#sync'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -8,8 +8,8 @@ def sync
   request = Net::HTTP::Get.new(uri.request_uri)
   response = http.request(request)
   output = JSON.parse response.body
-  imdbnum = output['movies'].each do |movie|
-    titles = movie['info']['original_title']
-    @Movies.new(:title => titles).save
+  output['movies'].each do |titles|
+    @Movie.create(:title => movie_info['info']['original_title'], :director => movie_info['info']['directors'], :genre => movie_info['info']['genres'], :year => movie_info['info']['year'], :quality => 'N/A')
+    print movie['info']['original_title'].to_yaml
   end
 end
