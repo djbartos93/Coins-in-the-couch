@@ -5,11 +5,11 @@ class MoviesControllerTest < ActionController::TestCase
     @movie = movies(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:movies)
-  end
+#  test "should get index" do
+#    get :index
+#    assert_response :success
+#    assert_not_nil assigns(:movies)
+#  end
 
   test "should get new" do
     get :new
