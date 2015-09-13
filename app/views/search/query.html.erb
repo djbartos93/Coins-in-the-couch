@@ -2,7 +2,7 @@
 <ul class="search-results-container">
   <% @records.each do |record| %>
     <li class="search-result">
-      <%= render records %>
+      <%= render record %>
     </li>
   <% end.empty? and begin %>
     <li>No Results</li>

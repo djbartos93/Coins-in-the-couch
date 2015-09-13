@@ -73,7 +73,12 @@ class MoviesController < ApplicationController
       print movie_info['info']['directors'].to_yaml
       print movie_info['info']['genres'].to_yaml
       print movie_info['info']['year'].to_yaml
-      Movie.find_or_create_by(:imdb_id => movie_info['info']['imdb']).update(:title => movie_info['info']['original_title'], :director => movie_info['info']['directors'], :genre => movie_info['info']['genres'], :year => movie_info['info']['year'], :quality => 'N/A', :imdb_id => movie_info['info']['imdb'])
+      Movie.find_or_create_by(:imdb_id => movie_info['info']['imdb']).update(:title => movie_info['info']['original_title'],
+      :director => movie_info['info']['directors'],
+      :genre => movie_info['info']['genres'],
+      :year => movie_info['info']['year'],
+      :quality => movie_info['releases'][0]['quality'],
+      :imdb_id => movie_info['info']['imdb'])
     end
   end
 
