@@ -1,0 +1,4 @@
+ip_addr: 'Couchpotato IP HERE'
+api_key: 'Couchpoatot API KEY HERE'
+
+# when done rename this file to settings.yml

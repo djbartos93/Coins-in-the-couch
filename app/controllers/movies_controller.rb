@@ -61,8 +61,11 @@ class MoviesController < ApplicationController
     end
   end
   def sync
+    url = "http://#{Settings.ip_addr}:5050/api/#{Settings.api_key}/movie.list"
+    print url
     print "movie sync in progress"
-    uri = URI.parse('http://172.16.0.15:5050/api/0c7afb2c910d49b2aa98b5f762e62b98/movie.list')
+    uri = URI.parse(url)
+
 
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
