@@ -1,10 +1,10 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direciton
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.order(sort_column + " " + sort_direciton)
   end
 
   # GET /movies/1
@@ -68,7 +68,7 @@ class MoviesController < ApplicationController
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
     output = JSON.parse response.body
-    output['movies'].each do |movie_info|
+    output['movies'].compact.each do |movie_info|
       print movie_info['info']['original_title'].to_yaml
       print movie_info['info']['directors'].to_yaml
       print movie_info['info']['genres'].to_yaml
@@ -77,13 +77,19 @@ class MoviesController < ApplicationController
       :director => movie_info['info']['directors'],
       :genre => movie_info['info']['genres'],
       :year => movie_info['info']['year'],
-      :quality => movie_info['releases'][0]['quality'],
+      :quality => 'N/A',
       :imdb_id => movie_info['info']['imdb'])
     end
   end
 
 
   private
+  def sort_column
+    Movie.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+  def sort_direciton
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
       @movie = Movie.find(params[:id])
