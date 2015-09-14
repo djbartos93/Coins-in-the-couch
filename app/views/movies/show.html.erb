@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<%= render "shared/main_header" %>
 
 <p>
   <strong>Title:</strong>
@@ -25,5 +26,15 @@
   <%= @movie.quality %>
 </p>
 
+<p>
+  <strong>IMDB Link: </strong>
+  <%= link_to "#{@movie.title} on IMDB", "http://imdb.com/title/#{@movie.imdb_id}" %>
+</p>
+<p>
+  plot summary:
+</p>
+<p>
+  Poster Image here at some point
+</p>
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
