@@ -2,6 +2,8 @@
 
 -A better movie list for couchpotato
 
+For those times when you need a little more info than couchpotato gives you, but dont really want to scroll your movies in Kodi or XBMC or plex this app is for you!
+
 the basic idea is to list out movies in a better format than the default movie list and allow for better sorting and searching.
 
 So far I have the basics down. Importing, searching and sorting. More to come soon...
