@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direciton
+  LOGGER = true
   # GET /movies
   # GET /movies.json
   def index
@@ -73,12 +74,7 @@ class MoviesController < ApplicationController
     response = http.request(request)
     output = JSON.parse response.body
     output['movies'].compact.each do |movie_info|
-      #print movie_info.to_yaml
-      #print movie_info['info']['original_title'].to_yaml
-      #print movie_info['info']['directors'].to_yaml
-      #print movie_info['info']['genres'].to_yaml
-      #print movie_info['info']['year'].to_yaml
-      #print movie_info['info']['mpaa'].to_yaml
+      debug_sync
       Movie.find_or_create_by(:imdb_id => movie_info['info']['imdb']).update(:title => movie_info['info']['original_title'],
       :director => movie_info['info']['directors'],
       :genre => movie_info['info']['genres'],
@@ -108,4 +104,11 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:title, :director, :genre, :year, :quality)
     end
+end
+def debug_sync
+  print movie_info['info']['original_title'].to_yaml
+  print movie_info['info']['directors'].to_yaml
+  print movie_info['info']['genres'].to_yaml
+  print movie_info['info']['year'].to_yaml
+  print movie_info['info']['mpaa'].to_yaml
 end
