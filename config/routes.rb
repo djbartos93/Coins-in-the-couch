@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   post 'sync' => 'movies#sync'
   get 'search/index'
   post 'search/query'
+
+  resources :settings
+
+  get 'settings/index'
 end

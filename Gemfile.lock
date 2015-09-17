@@ -48,11 +48,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
-    config (1.0.0)
-      activesupport (>= 3.0)
-      deep_merge (~> 1.0.0)
     debug_inspector (0.0.2)
-    deep_merge (1.0.1)
     elasticsearch (1.0.12)
       elasticsearch-api (= 1.0.12)
       elasticsearch-transport (= 1.0.12)
@@ -161,7 +157,6 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
-  config
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.4)
