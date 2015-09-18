@@ -24,7 +24,8 @@ class SettingsController < ApplicationController
 
 
   def update
-    @settings.update(setting_params)
+    @settings.update_attributes(setting_params)
+    redirect_to :action => 'index'
   end
 
   private
@@ -34,7 +35,7 @@ class SettingsController < ApplicationController
   end
 
      def set_settings
-       @settings = Setting.find params[:key]
+       @settings = Setting.find params[:id]
      end
 
 end

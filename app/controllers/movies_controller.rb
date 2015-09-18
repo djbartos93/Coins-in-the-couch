@@ -77,7 +77,7 @@ class MoviesController < ApplicationController
   end
 
   def cp_api
-    url = "http://#{Settings.ip_addr}:5050/api/#{Settings.api_key}/movie.list"
+    url = "http://#{Setting.cp_ip}:5050/api/#{Setting.cp_api}/movie.list"
     print url
     print "movie sync in progress"
     uri = URI.parse(url)
