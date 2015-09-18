@@ -1,15 +1,10 @@
 <h2> Settings </h2>
 
 <h3> CouchPotato Settings </h3>
-<%= form_for [:settings, @settings_update] do |f| %>
-  <div class="field">
-    <%= f.hidden_field :key => "cp_ip" %>
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_for(@setting) do |f| %>
+<%= hidden_field_tag 'key', 'cp_api'  %>
+<%= f.label :cp_api %><br>
+<%= f.text_field :value %>
+<%= f.submit %>
 <% end %>
-
 <h3> Logging Settings </h3>

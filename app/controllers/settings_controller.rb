@@ -1,7 +1,21 @@
 class SettingsController < ApplicationController
   before_action :set_settings, only: [:edit, :update, :show]
   def index
-    @settings = Setting.all
+  @settings = Setting.all
+  @setting = Setting.new
+  end
+  def create
+    @setting = Setting.new(setting_params)
+
+    respond_to do |format|
+      if @setting.save
+        format.html { redirect_to @setting, notice: 'Setting was successfully created.' }
+        format.json { render :show, status: :created, location: @setting }
+      else
+        format.html { render :new }
+        format.json { render json: @setting.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def new
@@ -10,14 +24,15 @@ class SettingsController < ApplicationController
 
 
   def update
-    @settings.update(params)
+    @settings.update(setting_params)
   end
 
   private
 
-     def params
-        params.require(:key).permit(:value, :etc)
-     end
+  def setting_params
+    params.require(:setting).permit(:value, :key)
+  end
+
      def set_settings
        @settings = Setting.find params[:key]
      end
