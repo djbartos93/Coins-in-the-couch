@@ -22,9 +22,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #global search
 gem 'searchkick', '~> 0.8.5'
 #style stuff
-#Polymer Elements rails for cool shit brah
-gem 'polymer-elements-rails'
-gem 'polymer-rails'
+#materialize-sass for some fancy shit.
+gem 'materialize-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

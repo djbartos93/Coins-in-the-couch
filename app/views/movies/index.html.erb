@@ -1,45 +1,49 @@
 <p id="notice"><%= notice %></p>
-<%= render "shared/main_header" %>
-<h1>Listing Movies</h1>
+<body>
+  <div class="container">
+    <%= render "shared/main_header" %>
+    <h1>Listing Movies</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= sortable 'title' %></th>
-      <th><%= sortable 'director' %></th>
-      <th><%= sortable 'genre' %></th>
-      <th><%= sortable 'year' %></th>
-      <th>Quality</th>
-      <th>IMDB ID</th>
-      <th><%= sortable 'mpaa' %></th>
-      <th>Runtime (Minuets)</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table>
+      <thead>
+        <tr>
+          <th><%= sortable 'title' %></th>
+          <th><%= sortable 'genre' %></th>
+          <th><%= sortable 'year' %></th>
+          <th>Quality</th>
+          <th><%= sortable 'mpaa' %></th>
+          <th>Runtime (Minuets)</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.director %></td>
-        <td><%= movie.genre.join(', ') %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.quality %></td>
-        <td><%= movie.imdb_id %></td>
-        <td><%= movie.mpaa %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+      <tbody>
+        <% @movies.each do |movie| %>
+          <tr>
+            <td><%= movie.title %></td>
+            <td><%= movie.genre.join(', ') %></td>
+            <td><%= movie.year %></td>
+            <td><%= movie.quality %></td>
+            <td><%= movie.mpaa %></td>
+            <td><%= link_to 'Show', movie %></td>
+            <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+            <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Movie', new_movie_path %>
-<h1>
-  Movie sync from couch potato
-</h1>
-<h2>
-<%= button_to "Sync!", :action => "sync" %>
+    <br>
+
+    <%= link_to 'New Movie', new_movie_path %>
+    <h2>
+      Movie sync from couch potato
+    </h2>
+    <h4>
+      <a class="waves-effect waves-light btn">
+    <%= button_to "Sync!", :action => "sync", :class => "waves-effect waves-light btn" %>
+  </a>
+  </h4>
+  </div>
+</body>
