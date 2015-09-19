@@ -26,7 +26,6 @@ gem 'searchkick', '~> 0.8.5'
 gem 'polymer-elements-rails'
 gem 'polymer-rails'
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
