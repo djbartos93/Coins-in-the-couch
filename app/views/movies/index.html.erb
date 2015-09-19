@@ -42,4 +42,9 @@
   Movie sync from couch potato
 </h1>
 <h2>
-<%= button_to "Sync!", :action => "sync" %>
+
+  <paper-button>flat button</paper-button>
+  <paper-button>
+      <iron-icon icon="favorite"></iron-icon>
+      <%= button_to "Sync!", :action => "sync" %>
+    </paper-button>
