@@ -1,10 +1,13 @@
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 <p id="notice"><%= notice %></p>
 <body>
   <div class="container">
     <%= render "shared/main_header" %>
     <h1>Listing Movies</h1>
 
-    <table>
+    <table class="highlight bordered">
       <thead>
         <tr>
           <th><%= sortable 'title' %></th>
@@ -26,24 +29,19 @@
             <td><%= movie.year %></td>
             <td><%= movie.quality %></td>
             <td><%= movie.mpaa %></td>
-            <td><%= link_to 'Show', movie %></td>
-            <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-            <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'info', movie, class: "material-icons" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
     <br>
-
-    <%= link_to 'New Movie', new_movie_path %>
     <h2>
       Movie sync from couch potato
     </h2>
-    <h4>
-      <a class="waves-effect waves-light btn">
-    <%= button_to "Sync!", :action => "sync", :class => "waves-effect waves-light btn" %>
-  </a>
-  </h4>
+    <%= button_to("SYNC",
+        {action: "sync"},
+        class: "btn waves-effect waves-light")%>
+
   </div>
 </body>

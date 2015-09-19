@@ -1,6 +1,18 @@
-<div id="header-container">
-  <%= form_tag(search_query_path, method: "post") do %>
-  <span id="search_field">
-    <%= text_field_tag(:search, nil, placeholder: "Search") %>
-  </span>
-  <% end %>
+<nav>
+  <div class="row">
+    <div class="nav-wrapper">
+      <div class="col s12">
+      <div class="input-feild col s3">
+        <%= form_tag(search_query_path, method: "post", id: "search") do %>
+        <span>
+          <%= text_field_tag(:search, nil, placeholder: "Search", id: "search") %>
+      </span>
+      <% end %>
+    </div>
+    <div class="col s1 offset-s8">
+      <%= link_to 'settings', '/settings', method: 'get', class: "material-icons right", style: "font-size: 32px; line-height: inherit" %>
+    </div>
+  </div>
+</div>
+</div>
+</nav>

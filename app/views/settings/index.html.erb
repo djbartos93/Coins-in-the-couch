@@ -1,25 +1,34 @@
-<h2> Settings </h2>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <%= render "shared/main_header" %>
+    <h2> Settings </h2>
 
-<h3> CouchPotato Settings </h3>
-<h4> Couchpotato API (found in couchpotato settings) </h4>
-<%= form_for Setting.find(1), :method => :PUT do |f| %>
-<%= f.hidden_field :key, value: "cp_api" %>
-<%= f.label :cp_api %><br>
-<%= f.text_field :value %>
-<% end %>
+    <h3> CouchPotato Settings </h3>
+    <h4> Couchpotato API (found in couchpotato settings) </h4>
+      <%= form_for Setting.find(1), :method => :PUT do |f| %>
+        <%= f.hidden_field :key, value: "cp_api" %>
+        <%= f.label :cp_api %><br>
+        <%= f.text_field :value %>
+      <% end %>
 
-<h4> Couchpotato IP address (of your server) </h4>
-<%= form_for Setting.find(2), :method => :PUT do |f| %>
-<%= f.hidden_field :key, value: "cp_ip" %>
-<%= f.label :cp_ip %><br>
-<%= f.text_field :value %>
-<% end %>
+    <h4> Couchpotato IP address (of your server) </h4>
+      <%= form_for Setting.find(2), :method => :PUT do |f| %>
+        <%= f.hidden_field :key, value: "cp_ip" %>
+        <%= f.label :cp_ip %><br>
+        <%= f.text_field :value %>
+      <% end %>
 
-<h4> Couchpotato port (usually 5050) </h4>
-<%= form_for Setting.find(3), :method => :PUT do |f| %>
-<%= f.hidden_field :key, value: "cp_port" %>
-<%= f.label :cp_port %><br>
-<%= f.text_field :value %>
-<%= f.submit %>
-<% end %>
+    <h4> Couchpotato port (usually 5050) </h4>
+      <%= form_for Setting.find(3), :method => :PUT do |f| %>
+        <%= f.hidden_field :key, value: "cp_port" %>
+        <%= f.label :cp_port %><br>
+        <%= f.text_field :value %>
+        <%= f.submit( :class => "waves-effect waves-light btn", :type => "submit", :name => "action") %>
+      <% end %>
 <h3> Logging Settings </h3>
+
+  </div>
+</body>
