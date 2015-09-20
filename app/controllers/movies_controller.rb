@@ -61,6 +61,20 @@ class MoviesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+    def cp_api
+      url = "http://#{Setting.cp_ip}:5050/api/#{Setting.cp_api}/movie.list"
+      print url
+      print "movie sync in progress"
+      uri = URI.parse(url)
+
+
+      http = Net::HTTP.new(uri.host, uri.port)
+      request = Net::HTTP::Get.new(uri.request_uri)
+      response = http.request(request)
+      @output = JSON.parse response.body
+    end
+
   def sync
     cp_api
     @output['movies'].compact.each do |movie_info|
@@ -74,20 +88,9 @@ class MoviesController < ApplicationController
       :imdb_id => movie_info['info']['imdb'],
       :mpaa => movie_info['info']['mpaa'])
     end
+    redirect_to :action => 'index'
   end
 
-  def cp_api
-    url = "http://#{Setting.cp_ip}:5050/api/#{Setting.cp_api}/movie.list"
-    print url
-    print "movie sync in progress"
-    uri = URI.parse(url)
-
-
-    http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::Get.new(uri.request_uri)
-    response = http.request(request)
-    @output = JSON.parse response.body
-  end
 
   private
   def sort_column

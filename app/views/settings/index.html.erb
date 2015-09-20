@@ -5,36 +5,66 @@
   <div class="container">
       <%= render "shared/main_header" %>
         <h2> Settings </h2>
+        <h4> CouchPotato Settings </h4>
 
-        <h3> CouchPotato Settings </h3>
-        <h4> Couchpotato API (found in couchpotato settings) </h4>
-        <%= form_for Setting.find(1), :method => :PUT do |f| %>
-          <%= f.hidden_field :key, value: "cp_api" %>
-          <%= f.label :cp_api %><br>
-          <%= f.text_field :value %>
-        <% end %>
-
-        <h4>  Couchpotato IP address (of your server) </h4>
-        <%= form_for Setting.find(2), :method => :PUT do |f| %>
-          <%= f.hidden_field :key, value: "cp_ip" %>
-          <%= f.label :cp_ip %><br>
-          <%= f.text_field :value %>
-        <% end %>
-
-        <h4> Couchpotato port (usually 5050) </h4>
-        <%= form_for Setting.find(3), :method => :PUT do |f| %>
-          <%= f.hidden_field :key, value: "cp_port" %>
-          <%= f.label :cp_port %><br>
-          <%= f.text_field :value %>
-          <%= f.submit( :class => "waves-effect waves-light btn deep-purple", :type => "submit", :name => "action") %>
-        <% end %>
+        <ul class="collection">
+            <li class="collection-item avatar">
+              <i class="material-icons circle">security</i>
+              <span class="title">Couchpotato API (found in couchpotato settings)</span>
+              <p><%= form_for Setting.find(1), :method => :PUT do |f| %>
+                <%= f.hidden_field :key, value: "cp_api" %>
+                <br>
+                <%= f.text_field :value %>
+                <br>
+                <%= f.submit( :class => "waves-effect waves-light btn deep-purple", :type => "submit", :name => "action") %>
+              <% end %>
+              </p>
+            </li>
+          </ul>
+          <ul class="collection">
+              <li class="collection-item avatar">
+                <i class="material-icons circle">device_hub</i>
+                <span class="title">Couchpotato IP (of your server)</span>
+                <p><%= form_for Setting.find(2), :method => :PUT do |f| %>
+                  <%= f.hidden_field :key, value: "cp_ip" %>
+                  <br>
+                  <%= f.text_field :value %>
+                  <br>
+                  <%= f.submit( :class => "waves-effect waves-light btn deep-purple", :type => "submit", :name => "action") %>
+                <% end %>
+                </p>
+              </li>
+            </ul>
+            <ul class="collection">
+                <li class="collection-item avatar">
+                  <i class="material-icons circle">settings_ethernet</i>
+                  <span class="title">Couchpotato port (usually 5050)</span>
+                  <p><%= form_for Setting.find(3), :method => :PUT do |f| %>
+                    <%= f.hidden_field :key, value: "cp_port" %>
+                    <br>
+                    <%= f.text_field :value %>
+                    <br>
+                    <%= f.submit( :class => "waves-effect waves-light btn deep-purple", :type => "submit", :name => "action") %>
+                  <% end %>
+                  </p>
+                </li>
+              </ul>
+              <ul class="collection">
+                  <li class="collection-item avatar">
+                    <i class="material-icons circle">refresh</i>
+                    <span class="title">Couchpotato Movie Sync</span>
+                    <p>
+                      <br>
+                      <%= button_to("SYNC MOVIES",
+                            {action: "sync",
+                            controller: "movies"},
+                            class: "btn waves-effect waves-light deep-purple")%>
+                    </p>
+                  </li>
+                </ul>
         <h3> Logging Settings </h3>
         Put a settin in here please. Really do it. JUST DO IT!
-        <h3>Movie sync from couch potato</h3>
-        <%= button_to("SYNC",
-              {action: "sync",
-              controller: "movies"},
-              class: "btn waves-effect waves-light deep-purple")%>
+
     <%= render "shared/footer" %>
   </div>
 </body>

@@ -1,21 +1,22 @@
 <nav>
   <div class="row">
     <div class="nav-wrapper" class="nav-color">
-      <div class=class="col s12 m4 l2">
+      <div class="col s12">
+        <div class="col s3"
         <%= form_tag(search_query_path, method: "post", id: "search") do %>
         <span>
           <%= text_field_tag(:search, nil, placeholder: "Search", id: "search") %>
       </span>
       <% end %>
     </div>
-    <div class="col s12 m4 l8">
+    <div class="col s7">
       Blank for now...
     </div>
-    <div class=class="col s12 m4 l2">
+    <div class="col s1">
       <%= link_to 'home', '/', method: 'get', class: "material-icons right", style: "font-size: 32px; line-height: inherit" %>
     </div>
-    <div class="col s1 offset-s1">
-      <%= link_to 'settings', '/settings', method: 'get', class: "material-icons right", style: "font-size: 32px; line-height: inherit" %>
+    <div class="col s1">
+      <%= link_to 'settings', '/settings', method: 'get', class: "material-icons center", style: "font-size: 32px; line-height: inherit" %>
     </div>
 
   </div>

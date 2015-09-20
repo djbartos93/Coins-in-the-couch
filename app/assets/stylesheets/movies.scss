@@ -10,3 +10,14 @@ nav {
 body select{
   line-height: inherit;
 }
+
+.shoten{
+  width: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+td {
+  border-spacing: 10px;
+  border-collapse: separate;
+}
