@@ -19,7 +19,14 @@
       </p>
     </li>
   </ul>
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
-<%= render "shared/footer" %>
+  <div class="row">
+    <div class="col s18">
+      <div class="col s1">
+        <%= link_to 'arrow_back', movies_path, class: "material-icons center", style: "font-size: 32px; line-height: normal" %>
+    </div>
+    <div class="col s1 offset-s2">
+      <%= link_to 'mode_edit', edit_movie_path(@movie), class: "material-icons center", style: "font-size: 32px; line-height: normal" %>
+    </div>
+  </div>
+</div>
 </div>
