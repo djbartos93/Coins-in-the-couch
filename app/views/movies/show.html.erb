@@ -1,42 +1,25 @@
+<head>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 <p id="notice"><%= notice %></p>
+<div class="container">
 <%= render "shared/main_header" %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
-
-<p>
-  <strong>Director:</strong>
-  <%= @movie.director %>
-</p>
-
-<p>
-  <strong>Genre:</strong>
-  <%= @movie.genre %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @movie.year %>
-</p>
-
-<p>
-  <strong>Quality:</strong>
-  <%= @movie.quality %>
-</p>
-
-<p>
-  <strong>IMDB Link: </strong>
-  <%= link_to "#{@movie.title} on IMDB", "http://imdb.com/title/#{@movie.imdb_id}" %>
-</p>
-<p>
-  plot summary:
-  <% get_plot %>
-  <%= @plot %>
-</p>
-<p>
-  Poster Image here at some point
-</p>
+<ul class="collection">
+    <li class="collection-item avatar">
+      <i class="material-icons circle purple">movie</i>
+      <span class="title"><strong><%= link_to "#{@movie.title}", "http://imdb.com/title/#{@movie.imdb_id}" %> </strong>(<%= @movie.year %> - <%= @movie.quality %>)</span>
+      <p>
+        <br>
+        <strong>Direcror:</strong> <%= @movie.director.nil? ? "None Listed" : @movie.director.join(" & ") %>
+        <br>
+         <strong>Genre(s):</strong> <%= @movie.genre.empty? ? "None Listed" : @movie.genre.join(" & ") %>
+         <br>
+         <br>
+         <strong>Plot:</strong><% get_plot %> <%= @plot %>
+      </p>
+    </li>
+  </ul>
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
+<%= render "shared/footer" %>
+</div>

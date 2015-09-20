@@ -7,7 +7,7 @@
     <%= render "shared/main_header" %>
     <h1>Listing Movies</h1>
 
-    <table class="highlight bordered">
+    <table class="highlight bordered" class="sort">
       <thead>
         <tr>
           <th><%= sortable 'title' %></th>
@@ -29,19 +29,13 @@
             <td><%= movie.year %></td>
             <td><%= movie.quality %></td>
             <td><%= movie.mpaa %></td>
-            <td><%= link_to 'info', movie, class: "material-icons" %></td>
+            <td><%= link_to 'info_outline', movie, class: "material-icons" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
     <br>
-    <h2>
-      Movie sync from couch potato
-    </h2>
-    <%= button_to("SYNC",
-        {action: "sync"},
-        class: "btn waves-effect waves-light")%>
-
+      <%= render "shared/footer" %>
   </div>
 </body>

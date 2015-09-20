@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "materialize";
 
+nav {
+  @extend .deep-purple, .lighten-2;
+}
+
 body select{
   line-height: inherit;
 }
